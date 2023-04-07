@@ -1,5 +1,22 @@
-@import "css\ reset.css";
+@import "../css/css\ reset.css";
+:root {
+  --insurance-primary-color:#F3F7FF;
+  --insurance-secondary-color:#3792EB;
+  --insurance-bg-color:#fff;
+  --insurance-button-bg-color:#1A0C29;
+  --insurance-button-text-color:#fff;
+  --insurance-text-color:#2F243F;
+}
 
 body {
-    background: lightblue;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+#insurance-application-wrapper #insurance-title {
+  position: relative;
+  text-align: center;
 }

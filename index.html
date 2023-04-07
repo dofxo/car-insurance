@@ -1,21 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- fav icon -->
+        <link rel="icon" href="public/images/bime.png" />
+        <!-- css link -->
+        <link rel="stylesheet" href="public/src/css/style.css" />
+        <!-- js link -->
+        <script defer src="public/src/js/app.js"></script>
+        <title>Car insurance</title>
+    </head>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- fav icon -->
-    <link rel="icon" href="public/images/bime.png">
-    <!-- css link -->
-    <link rel="stylesheet" href="public/src/css/style.css" />
-    <!-- js link -->
-    <script defer src="public/src/js/app.js"></script>
-    <title>Car insurance</title>
-</head>
-
-<body>
-
-</body>
-
+    <body>
+        <!-- insurance wrapper -->
+        <div id="insurance-application-wrapper">
+            <!-- app title -->
+            <h1 id="insurance-title">محاسبه آنلاین قیمت بیمه خودرو</h1>
+            <!-- main section -->
+            <main>
+                <!-- car model -->
+                <div id="car-model-wrapper">
+                    <h3 id="car-model-title">نوع خودرو</h3>
+                    <!-- car model box -->
+                    <div id="car-model-box">
+                        <div class="car-model-item"></div>
+                        <!-- rest are made in js -->
+                    </div>
+                </div>
+                <!-- car registration year -->
+                <div id="car-registration-year-wrapper">
+                    <h3 id="car-registration-title">سال ساخت خودرو</h3>
+                    <div id="car-registration-year-box">
+                        <div class="car-registration-year-item"></div>
+                        <!-- rest are made in js -->
+                    </div>
+                </div>
+                <!-- type of insurance -->
+                <div id="insurance-type-wrapper">
+                    <!-- بیمه شخص ثالث -->
+                    <div class="insurance-type-wrapper">
+                        <div class="insurance-type-check-box"></div>
+                        <div class="insurance-type-name">بیمه شخص ثالث</div>
+                    </div>
+                     <!-- بیمه شخص ثالث و کامل-->
+                    <div class="insurance-type-wrapper">
+                        <div class="insurance-type-check-box"></div>
+                        <div class="insurance-type-name">بیمه شخص ثالث و کامل</div>
+                    </div>
+                </div>
+                <!-- calculate button -->
+                <div id="calculate-button-wrapper">
+                    <button id="calculate-button">محاسبه</button>
+                </div>
+                <!-- factor -->
+                <div id="factor-wrapper">
+                    <div id="factor-title">
+                        خلاصه فاکتور بیمه شما
+                    </div>
+                    <div class="factor-item">
+                        نام خودرو شما: پراید
+                    </div>
+                    <div class="factor-item">
+                        نام خودرو شما: پراید
+                    </div>
+                    <div class="factor-item">
+                        نام خودرو شما: پراید
+                    </div>
+                    <div class="factor-item">
+                        نام خودرو شما: پراید
+                    </div>
+                    <!-- renew button -->
+                    <div id="renew-button-wrapper">
+                        <button id="#renew-button">
+                            محاسبه دیگر
+                        </button>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </body>
 </html>
