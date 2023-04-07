@@ -1,22 +1,99 @@
 @import "../css/css\ reset.css";
 :root {
-  --insurance-primary-color:#F3F7FF;
-  --insurance-secondary-color:#3792EB;
-  --insurance-bg-color:#fff;
-  --insurance-button-bg-color:#1A0C29;
-  --insurance-button-text-color:#fff;
-  --insurance-text-color:#2F243F;
+  --insurance-primary-color: #F3F7FF;
+  --insurance-secondary-color: #3792EB;
+  --insurance-bg-color: #fff;
+  --insurance-button-bg-color: #1A0C29;
+  --insurance-button-text-color: #fff;
+  --insurance-text-color: #2F243F;
+  --insurance-text-color2: #130F49;
+  --insurance-selection-color: #787878;
 }
 
+@font-face {
+  font-family: yekan;
+  src: url("/public/fonts/BYekan+.ttf");
+}
 body {
-  background: #fff;
+  background: #EDF0F4;
   display: flex;
-  align-items: center;
   justify-content: center;
-  min-height: 100vh;
 }
 
+* {
+  font-family: "yekan";
+}
+
+#insurance-application-wrapper {
+  margin: 5% 0;
+  display: flex;
+  flex-direction: column;
+  width: 80vw;
+  height: fit-content;
+  box-shadow: 0 0 10px -3px rgba(70, 70, 70, 0.2980392157);
+  border-radius: 20px;
+  padding: 20px;
+  background-color: var(--insurance-bg-color);
+}
 #insurance-application-wrapper #insurance-title {
+  color: var(--insurance-text-color);
+  position: relative;
   position: relative;
   text-align: center;
+  padding: 25px 0;
+}
+#insurance-application-wrapper #insurance-title::after {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 100%;
+  height: 2px;
+  border-radius: 5px;
+  width: 100%;
+  background-color: #bfbfbf;
+}
+#insurance-application-wrapper main {
+  width: 85%;
+  margin: 20px auto;
+}
+#insurance-application-wrapper main #car-details-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px 0;
+}
+#insurance-application-wrapper main #car-details-wrapper #car-details-title {
+  margin: 10px 0;
+}
+#insurance-application-wrapper main #car-details-wrapper .model-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px 0;
+  width: fit-content;
+}
+#insurance-application-wrapper main #car-details-wrapper .model-wrapper .model-title {
+  color: var(--insurance-text-color2);
+}
+#insurance-application-wrapper main #car-details-wrapper .model-wrapper .selection {
+  position: relative;
+  cursor: pointer;
+  min-width: 250px;
+  height: 40px;
+  background-color: var(--insurance-primary-color);
+  color: var(--insurance-text-color2);
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 5px -1px rgba(124, 124, 124, 0.3490196078);
+  display: flex;
+  align-items: center;
+}
+#insurance-application-wrapper main #car-details-wrapper .model-wrapper .selection::after {
+  position: absolute;
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-left: 1.5px solid var(--insurance-text-color2);
+  border-bottom: 1.5px solid var(--insurance-text-color2);
+  transform: rotate(-45deg);
+  left: 10px;
+  top: calc(50% - 5px);
 }

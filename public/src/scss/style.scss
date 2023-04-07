@@ -1,22 +1,109 @@
 // imports
 @import "../css/css\ reset.css";
 @import "../scss/config";
+@import "./font";
 
 // General Changes START ---
 body {
-    background: #fff;
+    background: #EDF0F4;
     display: flex;
-    align-items: center;
     justify-content: center;
-    min-height: 100vh;
 }
+
+* {
+    font-family: 'yekan';
+}
+
 // General Changes END ---
 
 // insurance wrapper START ---
 #insurance-application-wrapper {
+    margin: 5% 0;
+    display: flex;
+    flex-direction: column;
+    // align-items: center;
+    width: 80vw;
+    height: fit-content;
+    box-shadow: 0 0 10px -3px #4646464c;
+    border-radius: 20px;
+    padding: 20px;
+    background-color: var(--insurance-bg-color);
+
     // insurance title
     #insurance-title {
+        color: var(--insurance-text-color);
+        position: relative;
         position: relative;
         text-align: center;
+        padding: 25px 0;
+
+        &::after {
+            position: absolute;
+            content: '';
+            left: 0;
+            top: 100%;
+            height: 2px;
+            border-radius: 5px;
+            width: 100%;
+            background-color: #bfbfbf;
+        }
     }
+
+    main {
+        width: 85%;
+        margin: 20px auto;
+
+        #car-details-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 20px 0;
+
+            #car-details-title {
+                margin: 10px 0;
+            }
+
+            .model-wrapper {
+                display: flex;
+                flex-direction: column;
+                gap: 15px 0;
+                width: fit-content;
+
+
+                .model-title {
+                    color: var(--insurance-text-color2);
+                }
+
+                .selection {
+                    position: relative;
+                    cursor: pointer;
+                    min-width: 250px;
+                    height: 40px;
+                    background-color: var(--insurance-primary-color);
+                    color: var(--insurance-text-color2);
+                    padding: 15px;
+                    border-radius: 10px;
+                    box-shadow: 0 0 5px -1px #7c7c7c59;
+                    display: flex;
+                    align-items: center;
+
+                    &::after {
+                        position: absolute;
+                        content: '';
+                        width: 8px;
+                        height: 8px;
+                        border-left: 1.5px solid var(--insurance-text-color2);
+                        border-bottom: 1.5px solid var(--insurance-text-color2);
+                        transform: rotate(-45deg);
+                        left: 10px;
+                        top: calc(50% - 5px);
+                    }
+                }
+            }
+
+
+
+
+        }
+    }
+
 }
