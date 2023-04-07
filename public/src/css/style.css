@@ -123,3 +123,26 @@ body {
   left: 10px;
   top: calc(50% - 5px);
 }
+#insurance-application-wrapper main #insurance-type-wrapper {
+  margin-block: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  color: var(--insurance-text-color);
+}
+#insurance-application-wrapper main #insurance-type-wrapper .each-insurance-type-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+#insurance-application-wrapper main #insurance-type-wrapper .each-insurance-type-wrapper .insurance-type-check-box {
+  width: 20px;
+  height: 20px;
+  border: 1px solid;
+  cursor: pointer;
+  border-radius: 100%;
+}
+#insurance-application-wrapper main #insurance-type-wrapper .each-insurance-type-wrapper .insurance-type-check-box.checked {
+  background-color: green;
+}

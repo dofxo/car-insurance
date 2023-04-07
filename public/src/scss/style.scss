@@ -126,5 +126,28 @@ body {
                 }
             }
         }
+        #insurance-type-wrapper {
+            margin-block: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+            color: var(--insurance-text-color);
+            .each-insurance-type-wrapper {
+                display: flex;
+                flex-direction: row;
+                gap: 10px;
+                .insurance-type-check-box {
+                    width: 20px;
+                    height: 20px;
+                    border: 1px solid;
+                    cursor: pointer;
+                    border-radius: 100%;
+                   &.checked{
+                    background-color: green;
+                   }
+                }
+            }
+        }
     }
 }

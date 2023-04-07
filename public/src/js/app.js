@@ -3,7 +3,24 @@ import { CarModals } from "./car-render.js"
 
 // selectors
 const
-    selection = document.querySelectorAll('.selection');
+    selection = document.querySelectorAll('.selection'),
+    insuranceCheckBox = document.querySelectorAll(".insurance-type-check-box");
+
+// events
+insuranceCheckBox.forEach((checkbox) => {
+    checkbox.addEventListener("click", () => {
+        // Remove "checked" class from all insurance-type-checkboxes
+        insuranceCheckBox.forEach((item) => item.classList.remove("checked"));
+
+        if (checkbox.classList.contains("checked")) {
+            // Remove "checked" class from clicked checkbox.
+            checkbox.classList.remove("checked");
+        } else {
+            // Add "checked" class to clicked checkbox.
+            checkbox.classList.add("checked");
+        }
+    });
+});
 
 // click event on selection
 selection.forEach(selection => {
