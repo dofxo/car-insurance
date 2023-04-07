@@ -69,6 +69,29 @@ body {
   flex-direction: column;
   gap: 15px 0;
   width: fit-content;
+  position: relative;
+}
+#insurance-application-wrapper main #car-details-wrapper .model-wrapper .drop-down {
+  position: absolute;
+  width: 100%;
+  max-height: 180px;
+  overflow-y: scroll;
+  top: 100%;
+  left: 0;
+  background-color: inherit;
+  border-radius: inherit;
+  padding: 0 10px;
+  display: none;
+  flex-direction: column;
+  gap: 10px 0;
+  z-index: 2;
+}
+#insurance-application-wrapper main #car-details-wrapper .model-wrapper .drop-down > div {
+  padding: 10px 0;
+  transition: 0.2s ease-in-out;
+}
+#insurance-application-wrapper main #car-details-wrapper .model-wrapper .drop-down > div:hover {
+  transform: translateX(-10px);
 }
 #insurance-application-wrapper main #car-details-wrapper .model-wrapper .model-title {
   color: var(--insurance-text-color2);
