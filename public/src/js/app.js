@@ -2,16 +2,18 @@ const log = console.log
 import { CarModals } from "./car-render.js"
 
 // selectors
-const carModelItemsBox = document.querySelector('.drop-down'),
-    selection = document.querySelector('.selection');
+const
+    selection = document.querySelectorAll('.selection');
 
 // click event on selection
-selection.addEventListener("click", () => {
-    if (carModelItemsBox.classList.contains("hide")) {
-        carModelItemsBox.classList.remove("hide")
-    } else {
-        carModelItemsBox.classList.add("hide")
-    }
+selection.forEach(selection => {
+    selection.addEventListener("click", () => {
+        if (selection.children[1].classList.contains("hide")) {
+            selection.children[1].classList.remove("hide")
+        } else {
+            selection.children[1].classList.add("hide")
+        }
+    })
 })
 
 const carModals = new CarModals()
