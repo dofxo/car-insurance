@@ -33,16 +33,7 @@ export class CarModals {
         let items = document.querySelectorAll(".item");
 
         // events
-
-        // click event on selection
-        selection.addEventListener("click", () => {
-            if (carModelItemsBox.classList.contains("hide")) {
-                carModelItemsBox.classList.remove("hide")
-            } else {
-                carModelItemsBox.classList.add("hide")
-            }
-        })
-
+        
         // click event on items
         items.forEach(item => {
             // sets the items text content as the selectors text content
