@@ -23,6 +23,7 @@ body {
 #insurance-application-wrapper {
     margin: 2% 0;
     width: 80vw;
+    max-width: 1300px;
     box-shadow: 0 0 10px -3px #4646464c;
     border-radius: 20px;
     padding: 20px;
@@ -93,16 +94,16 @@ body {
                         transition: 0.3s;
                     }
 
-                    & > div {
+                    &>div {
                         padding: 10px 0;
                         transition: 0.2s ease-in-out;
                     }
 
-                    & > div:hover {
+                    &>div:hover {
                         transform: translateX(-5px);
                     }
 
-                    & > div {
+                    &>div {
                         position: relative;
 
                         &::after {
@@ -184,6 +185,7 @@ body {
                 }
             }
         }
+
         // buttons
         .buttons {
             cursor: pointer;
@@ -205,45 +207,58 @@ body {
                 transform: scale(0.8);
             }
         }
+
         #calculate-button-wrapper {
             display: flex;
             justify-content: center;
             flex-direction: column;
             align-items: center;
             gap: 10px 0;
+
             #calculate-hint {
                 color: red;
-                &.animation{
+
+                &.animation {
                     animation: hintAnimation .5s;
                 }
+
                 &.hide {
                     display: none;
                 }
+
                 @keyframes hintAnimation {
-                    0%,100% {
+
+                    0%,
+                    100% {
                         transform: rotate(0deg);
                     }
-                    25%{
+
+                    25% {
                         transform: rotate(3deg);
                     }
+
                     50% {
                         transform: rotate(-3deg);
                     }
-                    75%{
+
+                    75% {
                         transform: rotate(3deg);
                     }
                 }
             }
         }
+
         #loading-wrapper {
             margin-top: 30px;
             display: flex;
             justify-content: center;
             align-items: center;
+
             &.hide {
                 display: none;
             }
         }
+
         #factor-wrapper {
             min-height: max-content;
             transition: 0.3s ease-in-out;
@@ -256,6 +271,7 @@ body {
                 transition: 0.3s ease-in-out;
                 overflow: hidden;
             }
+
             // factor details
             #factor-details {
                 display: flex;
@@ -266,9 +282,11 @@ body {
                 border-radius: 8px;
                 width: 60vw;
                 max-width: 450px;
+
                 #factor-title {
                     color: var(--insurance-factor-color);
                 }
+
                 .factor-item {
                     color: var(--insurance-factor-color);
                     padding-block: 10px;
@@ -281,6 +299,7 @@ body {
                     &:has(#car-insurance-cost) {
                         position: relative;
                         margin-top: 20px;
+
                         &::after {
                             content: "";
                             position: absolute;
@@ -291,10 +310,12 @@ body {
                             background-color: #c0c0c0a0;
                         }
                     }
+
                     &:first-of-type,
                     &:last-of-type {
                         margin-top: 5px;
                     }
+
                     // factor values
                     .factor-value {
                         font-weight: bold;

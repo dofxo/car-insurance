@@ -79,6 +79,7 @@ body {
 #insurance-application-wrapper {
   margin: 2% 0;
   width: 80vw;
+  max-width: 1300px;
   box-shadow: 0 0 10px -3px rgba(70, 70, 70, 0.2980392157);
   border-radius: 20px;
   padding: 20px;
