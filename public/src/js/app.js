@@ -1,4 +1,3 @@
-const log = console.log
 import { CarModals } from "./car-render.js"
 import PersianDate from "./year.js";
 import CalculateInsurance from "./calculate.js";
@@ -7,6 +6,14 @@ import CalculateInsurance from "./calculate.js";
 const
     selection = document.querySelectorAll('.selection'),
     insuranceCheckBox = document.querySelectorAll(".insurance-type-check-box");
+
+
+
+// renders the car List
+new CarModals().renderCars()
+
+//  renders a "new 20 years from" now list
+new PersianDate().currenYearToNYearsBack(20)
 
 // events
 insuranceCheckBox.forEach((checkbox) => {
@@ -35,20 +42,8 @@ selection.forEach(selection => {
     })
 })
 
-const carModals = new CarModals()
-carModals.renderCars()
-
-
-
-
-//  renders a "new 20 years from" now list
-new PersianDate().currenYearToNYearsBack(20)
-
 // gets the values after clicking the calc button and calcs the insurance amount
 const calculateButton = document.querySelector('#calculate-button')
-
-
-
 
 // call the calculate method in the calculate class
 const insuranceCheckBoxes = document.querySelectorAll('.insurance-type-check-box')
