@@ -51,7 +51,7 @@ body {
 
     main {
         width: 85%;
-        margin: 20px auto;
+        margin: 40px auto;
         display: flex;
         justify-content: center;
         gap: 15px 0;
@@ -62,14 +62,9 @@ body {
             flex-direction: column;
             gap: 20px 0;
 
-            #car-details-title {
-                margin: 10px 0;
-            }
-
             .model-wrapper {
                 display: flex;
                 flex-direction: column;
-                gap: 15px 0;
                 width: fit-content;
                 position: relative;
 
@@ -94,16 +89,16 @@ body {
                         transition: 0.3s;
                     }
 
-                    &>div {
+                    & > div {
                         padding: 10px 0;
                         transition: 0.2s ease-in-out;
                     }
 
-                    &>div:hover {
+                    & > div:hover {
                         transform: translateX(-5px);
                     }
 
-                    &>div {
+                    & > div {
                         position: relative;
 
                         &::after {
@@ -129,12 +124,14 @@ body {
 
                 .model-title {
                     color: var(--insurance-text-color2);
+                    font-size: var(--insurance-items-titles-font-size);
+                    padding-bottom: 15px;
                 }
 
                 .selection {
                     position: relative;
                     cursor: pointer;
-                    min-width: 250px;
+                    min-width: 270px;
                     height: 40px;
                     background-color: var(--insurance-primary-color);
                     color: var(--insurance-text-color2);
@@ -143,6 +140,7 @@ body {
                     box-shadow: 0 0 5px -1px #7c7c7c59;
                     display: flex;
                     align-items: center;
+                    font-size: var(--insurance-normal-text-font-size);
 
                     &::after {
                         position: absolute;
@@ -171,7 +169,9 @@ body {
                 display: flex;
                 flex-direction: row;
                 gap: 10px;
-
+                .insurance-type-name {
+                    font-size: var(--insurance-items-titles-font-size);
+                }
                 .insurance-type-check-box {
                     width: 20px;
                     height: 20px;
@@ -186,40 +186,38 @@ body {
             }
         }
 
-        // buttons
-        .buttons {
-            cursor: pointer;
-            padding: 8px 25px;
-            background-color: var(--insurance-button-bg-color);
-            color: var(--insurance-button-text-color);
-            border: 1px solid transparent;
-            border-radius: 50px;
-            font-size: 18px;
-            transition: 0.15s linear;
-
-            &:hover {
-                background-color: transparent;
-                color: var(--insurance-button-hover-text-color);
-                border: 1px solid var(--insurance-button-bg-color);
-            }
-
-            &:active {
-                transform: scale(0.8);
-            }
-        }
-
         #calculate-button-wrapper {
             display: flex;
             justify-content: center;
             flex-direction: column;
             align-items: center;
             gap: 10px 0;
+            font-size: var(--insurance-normal-text-font-size);
 
+            button {
+                cursor: pointer;
+                padding: 8px 25px;
+                background-color: var(--insurance-button-bg-color);
+                color: var(--insurance-button-text-color);
+                border: 1px solid transparent;
+                border-radius: 50px;
+                transition: 0.15s linear;
+
+                &:hover {
+                    background-color: transparent;
+                    color: var(--insurance-button-hover-text-color);
+                    border: 1px solid var(--insurance-button-bg-color);
+                }
+
+                &:active {
+                    transform: scale(0.8);
+                }
+            }
             #calculate-hint {
                 color: red;
 
                 &.animation {
-                    animation: hintAnimation .5s;
+                    animation: hintAnimation 0.5s;
                 }
 
                 &.hide {
@@ -227,7 +225,6 @@ body {
                 }
 
                 @keyframes hintAnimation {
-
                     0%,
                     100% {
                         transform: rotate(0deg);
@@ -323,6 +320,36 @@ body {
                     }
                 }
             }
+        }
+    }
+}
+// responsive
+@media screen and (max-width: 400px) {
+
+    #insurance-title {
+        font-size: 19px;
+    }
+    .model-wrapper {
+        font-size: 14px;
+    }
+    .insurance-type-name {
+        font-size: 14px;
+    }
+    #insurance-application-wrapper {
+        padding: 0;
+    }
+    #factor-title{
+        font-size: 17px;
+    }
+    .factor-value{
+        font-size: 12px !important;
+    }
+    .selection {
+        min-width: 60vw !important;
+        font-size: 12px;
+        justify-content: center;
+        &::after {
+            display: none !important;
         }
     }
 }

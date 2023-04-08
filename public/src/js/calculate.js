@@ -27,7 +27,7 @@ class CalculateInsurance {
             carRegisterYear = document.querySelector('#car-registration-year'),
             carInsuranceType = document.querySelector('#car-insurance-type')
 
-        if (this.carName !== "نوع خودرو را مشخص کنید" && this.carRegistrationYear !== "سال ساخت خودرو را مشخص کنید" && this.insuranceType) {
+        if (this.carName !== "انتخاب نوع خودرو" &&  this.carRegistrationYear !== "انتخاب سال ساخت" && this.insuranceType) {
             carModel.innerHTML = this.carName
             carRegisterYear.innerHTML = this.carRegistrationYear
             carInsuranceType.innerHTML = this.insuranceType

@@ -12,6 +12,10 @@
   --insurance-button-hover-bg: #fff;
   --insurance-button-hover-text-color: #1A0C29;
   --insurance-factor-color:#fff;
+  --insurance-title-font-size:40px;
+  --insurance-car-details-title-font-size:25px;
+  --insurance-items-titles-font-size:20px;
+  --insurance-normal-text-font-size:18px;
 }
 
 @font-face {
@@ -104,7 +108,7 @@ body {
 }
 #insurance-application-wrapper main {
   width: 85%;
-  margin: 20px auto;
+  margin: 40px auto;
   display: flex;
   justify-content: center;
   gap: 15px 0;
@@ -115,13 +119,9 @@ body {
   flex-direction: column;
   gap: 20px 0;
 }
-#insurance-application-wrapper main #car-details-wrapper #car-details-title {
-  margin: 10px 0;
-}
 #insurance-application-wrapper main #car-details-wrapper .model-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 15px 0;
   width: fit-content;
   position: relative;
 }
@@ -172,11 +172,13 @@ body {
 }
 #insurance-application-wrapper main #car-details-wrapper .model-wrapper .model-title {
   color: var(--insurance-text-color2);
+  font-size: var(--insurance-items-titles-font-size);
+  padding-bottom: 15px;
 }
 #insurance-application-wrapper main #car-details-wrapper .model-wrapper .selection {
   position: relative;
   cursor: pointer;
-  min-width: 250px;
+  min-width: 270px;
   height: 40px;
   background-color: var(--insurance-primary-color);
   color: var(--insurance-text-color2);
@@ -185,6 +187,7 @@ body {
   box-shadow: 0 0 5px -1px rgba(124, 124, 124, 0.3490196078);
   display: flex;
   align-items: center;
+  font-size: var(--insurance-normal-text-font-size);
 }
 #insurance-application-wrapper main #car-details-wrapper .model-wrapper .selection::after {
   position: absolute;
@@ -210,6 +213,9 @@ body {
   flex-direction: row;
   gap: 10px;
 }
+#insurance-application-wrapper main #insurance-type-wrapper .each-insurance-type-wrapper .insurance-type-name {
+  font-size: var(--insurance-items-titles-font-size);
+}
 #insurance-application-wrapper main #insurance-type-wrapper .each-insurance-type-wrapper .insurance-type-check-box {
   width: 20px;
   height: 20px;
@@ -220,30 +226,30 @@ body {
 #insurance-application-wrapper main #insurance-type-wrapper .each-insurance-type-wrapper .insurance-type-check-box.checked {
   background-color: var(--insurance-checkBox-color);
 }
-#insurance-application-wrapper main .buttons {
-  cursor: pointer;
-  padding: 8px 25px;
-  background-color: var(--insurance-button-bg-color);
-  color: var(--insurance-button-text-color);
-  border: 1px solid transparent;
-  border-radius: 50px;
-  font-size: 18px;
-  transition: 0.15s linear;
-}
-#insurance-application-wrapper main .buttons:hover {
-  background-color: transparent;
-  color: var(--insurance-button-hover-text-color);
-  border: 1px solid var(--insurance-button-bg-color);
-}
-#insurance-application-wrapper main .buttons:active {
-  transform: scale(0.8);
-}
 #insurance-application-wrapper main #calculate-button-wrapper {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
   gap: 10px 0;
+  font-size: var(--insurance-normal-text-font-size);
+}
+#insurance-application-wrapper main #calculate-button-wrapper button {
+  cursor: pointer;
+  padding: 8px 25px;
+  background-color: var(--insurance-button-bg-color);
+  color: var(--insurance-button-text-color);
+  border: 1px solid transparent;
+  border-radius: 50px;
+  transition: 0.15s linear;
+}
+#insurance-application-wrapper main #calculate-button-wrapper button:hover {
+  background-color: transparent;
+  color: var(--insurance-button-hover-text-color);
+  border: 1px solid var(--insurance-button-bg-color);
+}
+#insurance-application-wrapper main #calculate-button-wrapper button:active {
+  transform: scale(0.8);
 }
 #insurance-application-wrapper main #calculate-button-wrapper #calculate-hint {
   color: red;
@@ -329,4 +335,33 @@ body {
 #insurance-application-wrapper main #factor-wrapper #factor-details .factor-item .factor-value {
   font-weight: bold;
   font-size: 18px;
+}
+
+@media screen and (max-width: 400px) {
+  #insurance-title {
+    font-size: 19px;
+  }
+  .model-wrapper {
+    font-size: 14px;
+  }
+  .insurance-type-name {
+    font-size: 14px;
+  }
+  #insurance-application-wrapper {
+    padding: 0;
+  }
+  #factor-title {
+    font-size: 17px;
+  }
+  .factor-value {
+    font-size: 12px !important;
+  }
+  .selection {
+    min-width: 60vw !important;
+    font-size: 12px;
+    justify-content: center;
+  }
+  .selection::after {
+    display: none !important;
+  }
 }
