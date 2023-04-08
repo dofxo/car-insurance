@@ -1,5 +1,6 @@
 const log = console.log
 import { CarModals } from "./car-render.js"
+import PersianDate from "./year.js";
 
 // selectors
 const
@@ -37,3 +38,7 @@ const carModals = new CarModals()
 carModals.renderCars()
 
 
+
+
+//  renders a "new 20 years from" now list
+new PersianDate().currenYearToNYearsBack(20)
