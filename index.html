@@ -1,91 +1,121 @@
 <!DOCTYPE html>
 <html lang="en" dir="rtl">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- fav icon -->
+        <link rel="icon" href="public/images/bime.png" />
+        <!-- css link -->
+        <link rel="stylesheet" href="public/src/css/style.css" />
+        <!-- js link -->
+        <script type="module" defer src="public/src/js/app.js"></script>
+        <title>Car insurance</title>
+    </head>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- fav icon -->
-    <link rel="icon" href="public/images/bime.png" />
-    <!-- css link -->
-    <link rel="stylesheet" href="public/src/css/style.css" />
-    <!-- js link -->
-    <script type="module" defer src="public/src/js/app.js"></script>
-    <title>Car insurance</title>
-</head>
-
-<body>
-    <!-- insurance wrapper -->
-    <div id="insurance-application-wrapper">
-        <!-- app title -->
-        <h1 id="insurance-title">محاسبه آنلاین قیمت بیمه خودرو</h1>
-        <!-- main section -->
-        <main>
-            <!-- car details wrapper -->
-            <div id="car-details-wrapper">
-                <!-- details title -->
-                <h2 id="car-details-title">مشخصات خودرو</h2>
-                <!-- car model -->
-                <div id="car-model-wrapper" class="model-wrapper">
-                    <h3 id="car-model-title" class="model-title">نوع خودرو</h3>
-                    <!-- car model box -->
-                    <div id="car-model-box" class="selection">
-                        <span>نوع خودرو را مشخص کنید</span>
-                        <div id="car-model-items" class="drop-down hide">
+    <body>
+        <!-- insurance wrapper -->
+        <div id="insurance-application-wrapper">
+            <!-- app title -->
+            <h1 id="insurance-title">محاسبه آنلاین قیمت بیمه خودرو</h1>
+            <!-- main section -->
+            <main>
+                <!-- car details wrapper -->
+                <div id="car-details-wrapper">
+                    <!-- details title -->
+                    <h2 id="car-details-title">مشخصات خودرو</h2>
+                    <!-- car model -->
+                    <div id="car-model-wrapper" class="model-wrapper">
+                        <h3 id="car-model-title" class="model-title">
+                            نوع خودرو
+                        </h3>
+                        <!-- car model box -->
+                        <div id="car-model-box" class="selection">
+                            <span>نوع خودرو را مشخص کنید</span>
+                            <div
+                                id="car-model-items"
+                                class="drop-down hide"
+                            ></div>
+                            <!-- rest are made in js -->
                         </div>
-                        <!-- rest are made in js -->
                     </div>
-                </div>
-                <!-- car registration year -->
-                <div id="car-registration-year-wrapper" class="model-wrapper">
-                    <h3 id="car-registration-title" class="model-title">سال ساخت خودرو</h3>
-                    <div id="car-registration-year-box" class="selection">
-                        <span>سال ساخت خودرو را مشخص کنید</span>
-                        <div id="car-registration-year-items" class="drop-down hide">
+                    <!-- car registration year -->
+                    <div
+                        id="car-registration-year-wrapper"
+                        class="model-wrapper"
+                    >
+                        <h3 id="car-registration-title" class="model-title">
+                            سال ساخت خودرو
+                        </h3>
+                        <div id="car-registration-year-box" class="selection">
+                            <span>سال ساخت خودرو را مشخص کنید</span>
+                            <div
+                                id="car-registration-year-items"
+                                class="drop-down hide"
+                            ></div>
+                            <!-- rest are made in js -->
                         </div>
-                        <!-- rest are made in js -->
                     </div>
                 </div>
-            </div>
-            <!-- type of insurance -->
-            <div id="insurance-type-wrapper">
-                <!-- بیمه شخص ثالث -->
-                <div class="each-insurance-type-wrapper">
-                    <div class="insurance-type-check-box"></div>
-                    <h3 class="insurance-type-name">بیمه شخص ثالث</h3>
-                </div>
-                <!-- بیمه شخص ثالث و کامل-->
-                <div class="each-insurance-type-wrapper">
-                    <div class="insurance-type-check-box"></div>
-                    <h3 class="insurance-type-name">بیمه شخص ثالث و کامل</h3>
-                </div>
-            </div>
-            <!-- calculate button -->
-            <div id="calculate-button-wrapper">
-                <button id="calculate-button">محاسبه</button>
-            </div>
-            <!-- factor -->
-            <div id="factor-wrapper">
-                <!-- car image -->
-                <div id="factor-car-image">
-                    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoGBxQUExYUFBQYGBYZGRwaGxoaGiEiIBocHR0fGhsZGhocHysiHx8oHR8cIzQjKCwuMTExHCI3PDcwOyswMS4BCwsLDw4PHRERHTAoIikuMDAwMDAwMDAwLjAwMDAwMDAwMDI2MDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMP/AABEIAKgBLAMBIgACEQEDEQH/xAAcAAABBQEBAQAAAAAAAAAAAAAFAAIDBAYBBwj/xABKEAACAQIEAgcEBwQHBwMFAAABAhEAAwQSITEFQQYTIlFhcYEykaGxFCNCUsHR8AdikuEWU3KCotLxFSQzQ2OywoOT4jQ1RFSj/8QAGQEAAwEBAQAAAAAAAAAAAAAAAAECAwQF/8QAMBEAAgIBAwMBCAEEAwEAAAAAAAECEQMSITEEQVETBSIyYXGBkaEUUsHR8SOx8BX/2gAMAwEAAhEDEQA/AIunOKvX7trDEmXbO6KDInS3nA9pgpOg2gc69D4XhrNlUtWQUCoQVylS23bIMEnVtYNec9FL929jbuJW0HczkL9m3bnshmOpBCjYSSSfOtPjuAvdGbGX7hAafqmy2wpIkQQWDD94meR5VzcbGwf4lxDDlhZu3LWjiFBBOVSNCmp9qB5ChjnDgsbJv2is9hbV3IYacwTqyuoG8bHnyv8ACsKyEW7YthLbnLC5OsUbEFDBIkA9kSddqJXOJqpVDK3WJyo57RjcjkwGmx7qdXuxWZmx0jtpcyXrhGgYs6NbGWDAa3c+DKSTB0gVqeH8Tt3BmtspWYJVpE7kqdiNdfWqd7AFlg66k52McyWUqQRl5Du09a2H6N2TbHZ6o6ZurJQhuedVMMD8Q1ONrgT3CGPNlznW2LzKQNFDRJ17XsgjfcGqV7hCv2jmVdQclx8w75JiBzygCNRrNd+k3LNxLZUKhGUMohdATAQEwdNo0315TcRvg286GSIYQdWidipkyJGk77GhtAkT4PANaVclw5QukgMPwb3k1O+IuQIuW/7yEf8Anp7qC2sbcQggnqmUEhhqc0SUEg7kSD7u+LiXEGtnrOtt9WcoKRrMHtglpk6CJo1pLYejyFjjrnbf6v2YGXWYkySWXv2j1rHdJOkqkl7llmXJlEFRupbUDYHOm86Ggd7pqB1l1VQXVcFVDMVujUNOsAAAGZ1JPfoJ6VcWuXrltnXqkFtWRAQ2UMBzGgmB5COczNt8hSQIxT9bcbq0YAkwkliANYBjkKpMx1U0cu8eu27SXLSKim31Su0FyFILBRyGZjqRQZcVmglIbWWJkuWM9onw00g6k1SExtuyohjLMCSVjs6HQSGnUTsBSMgDxgxyHMA9+lFuH4O7i3Wxh7SMbSMCfsyW/wCLmntEiIkRptpNUeK8OFm91TMFZYzmZAYnU6EyI/0osKH2+LoQVa3bzTIZew38UEEeGUedWsXj7ZuWjPWlQAwb2AQ05QSZZecmN6X9Hle8EtsM5ZirZlysFBIjXMuqtv3r30OGHIAfSOYB289yB4nx7qlqLHujRXei2I6gYgFQDJABJgAgZZ1G+2vKhuD4VevFlRpZZLCQZAMSvfuBpT+HdIr2GYtYZdZzWxJtmd5X03G1XLvSZmuLiAiWnGUBVBykAz2pJ5xp3AVD1IexLgeB3VNk3D2LmUqOzJLcyMwmPHwrX9H+kCIl5ywuXVZszm2wV4CqigKCJIC84BjeZoTwXitshW+qAObOtu2fq2YMobMx1B00/eMd9XHwt3Dph/o4a612DdtQCpJUsquTqgNudPCoV2VSNBwzpMbzKiPaLMe2BKsIUllCNOubxoHx3idm3ebq2zJmW5ctsgyhifbzZpza+zHf3GpcTdtqcPdfDnPdZnZEQA5l2V+yWhYGxBkGY2qpxspjFz2WVLQTJbJXR3aSyjmrKoK7faPeJp78gghc4krYjDX5BHWqgfLlGVlgr7WwLbxr36Vzpd05WwXtWwC0gqAIymSSWYHXUREUC47i7j4RAC3VstsoAFy5bcBi4iVbrGJ3gginYfgVuwxFodf1qlDdZYt22zAh85lSYDSATt4xTukOtwLe6U3zmRXkMWLGD28xDag7DSNNdKr4QlnX6okiBIkg8ohjGvd4Vafh6q8NZgxBVswGaCA6sBqhMkd+lWAjWbirEK2p1IggE7c/Des212LS8hW3g0w+IKAAdYnYUjd3AQWnC8s7GZ0gCtV0Vx1jDp1dw9WxuOEDtMrmPs6941nw8Ky+DxCfSrV26UAuWmYymlrfKE19qFHjrVnpDw03Dh51uMg6pj2SpZusZzGuUdo/w99XH3XZnLfYK8e41hsRd6nrrapbl7hZwJZZKIGkz2gCY5RT14/hLRS31ttFyEZi41b2xqI11PhrFAsR0QwzdauZpGhZiSxMBgdBuxdRHwqhx3omQLl4qFFsKAqkmSlqSOcyYBjYzqYmnqsVUWsR0ws2LF5HuLcuszrb6vUAg6ZmB0VtCYOwrze7fljm2EmOUHX8a1dvoGWwxuNdK3YkiBlHZzkSSDOUjQDee6sXiLegM8o/XpWkFHsRJvuOa4O6NNIPPxnwqN2g7VDudTXUMsAP131pRJM17ceNR3rQmo7shz+t6ngjca0AfQHB1TCYa3h3AtuomXiLjjttlfYyeRgwNoFFsZfDBQjBsxlgpE5Rq3oTA9az68T4c9tmCG7mVlD9TduZiQeyLpQyd+fKh+Hw9n6Rca3YLCBbUNYyBip7Qu3HUQdQoeQdCCCYnK6NArj2dB1dlSqH/h5Yz28n21BGiAyCNd9N4ozgodMxyuYGYQDPMQeYOkHw2G1Azgrtu4t1GFp9QbDSU6sA9m2SdyxWSmgkSuk1eXiBS5pbKEzuJXTcZpBBmOywBkyJ1kWzEy9cvNbcI5OR/Y1khgCSknfSWEydG7qX0rtFpCtADKftHkI8Rt6VzH4pXtq4BMEEEboZgmCdxJ/0pJdTUMpzjRgNvHXX+0POm3vswSJMouqMwlQSIJ13iCdwwPr60Bu9ZZvtl11zGF1ysNHEEZoiCO8TFTXGuWbjEwVcSYMrIhSrjkdQc0DbWn46y1y2l1ApdZid4+0og7jun8DUN39S0qHjhZvWwjXBA1RlJ1A1BzAjw2rI9K+CwrJDMbdsEMWaBNyGbYz2Ttvoe4VprRZG1yq5+yCxAcDMYUj7oJEd+x1FVOlnGOqUNdzW5+rZ7cHftrvsDttzNTt9x7nkmIsMsn7MkZtgx3O/gQaenDpwxuC6D2o6sT2dCSxJ0nSIEmt5xa9hrLW7rNaew109lDOaUguw5QCDoNde+sT0gxa3L0p1ZCgopUEFgGMM4JnMQRqd60UmzNqipwzhHXMRJIUZnYbKg3YTEmNhzp2OwDWmFsoVLQygnUq2iE+YE8qNYLCYpbPV4e2bVy5mF2faa33kn2FBBBG+sctRfC8A128tlbqtcfMMytqD2gJLR3A6cj307Ch54mbNoKtkL2ApdQJuZmDkXSQd1OUKNQIMxpQlLhnOQMwbPEaHXNttHhRjj+HtYZFwy3RccNncBB2SygGH33B7HcATqaCRBB3ggnxH+lUhM0uJ4sMSi3b4JuHMGbeFzAhLYJhN9D4nfWqHDOG3L5LC53hm9ohY7ZyDUgaT5inWsEbz3LlsRbUs22wYgIIExqQKudH8ddwGINxkmCysp+0IEhSOcEa99TXZD+oIwd3JbctaV0udmT9lhqCpGoOvkdfS/wAHwiXlYAfWEqUGYAAAMWgN7R2gT76I9J8bhyP91GVHANy28Ak9khlE6E67SdWmg3Br/V3UZCSQwMSQTESAR3jSolwC2ZbxN+2to2+oAuqTNxXMkkgwyHQACRpzFG8DdxOGTE9biCLpVfq88sx0CEEgggKW2OmXwoJxK9Ze85w4ujMBltwJDEgMkd28EAk+s0uJ8Zu3XAZQboAQtAkxoAQRuNRpSplE9jil5biv15VltMqlQTG8od5JOs9+tVMHj1F3rG7Y+0pnt5tGzQRoeY50207GQ8AqdvZJI0279fCiNzhltUJLMHAIe0wEA6MpVgZOnf47UbdyqLoXDvg1hbfXdZqSIcJMALpDjYkEiPjRziFu9dshFu2jh0XOFZmLBGEKJ0MKTziI50Ot8Lw4wLPIZptM7NBIbPDKoHsrDqI99bPid3Lnt27qoqAjQBiAEkoUCkxlMzp6xUvjYdmLdgLgBuG62QySZK9w55uR8ge+reKvzewrG2LaKxAZQNYAMFCYDAHWe/0oTiOL5nztbzEASdVXXk2UySCy6yPSliSt1hctZg2eWQuXAkZS0trJPny1qVs9y3uXjg7xt4a6GnrbpWS2YnrJUfVkQvYzR4mtLhcVbt3HvXGfIAbFqAsuVMuveWLjLoNkrPdJLXVYTDoRGS4VF3N3FgwK7qVMHnvV/hfE8Lat9abq6qyWhpnVZ1dhoesYjMTMQw7jN2ZGga7aLNdyZCTnXMvsZgFN+5+99lR/PLVwGDFjBX1vSbpN0B2Bkq7EBgdgCe1AjQUWw7obbtiGVetTMxzdkBdCikH2VEAnmSdda8p4x0nXNew7M/VloRgTCrnhZH2gAuYQdQ7akmrp9ib8nqPFMGvUYi3aIYG29ztEHM0sYJ5a7d0Cvn260HfTatTxnpPZ6tbdk3GJtst0mRnZhlAG/ZTcCNfWaxjXe+dKuCfJMmdZd/KuYW1rm7qktsJ12JHu51JiGCFlXXX2t9B3GrvsSRDUnv3qb6JdOqqY8iaVkAjTRtNSYHjOlT28e6DKpaP3dvSk2+w0l3PZuLPhrbZ2ti0wBAUAI1zQnNaZSBnnTQ7HXeiXD8dbsqM2JtXA2dmV7iAzcYMQrAhW3iCNe+srawOHNxnfB2urstly2jJYtDkuLqrmUIIAPed9IfxRuFBmRsOqskEZQq5s2q7HKw7zqNBWKe5o0ac9IsCSEOJslM0QzjNbYHQZp2BBE8u+DpTtcTa3MqWQwobnAmNeenfv41ir2Cw10lFsQWQNbZOyysASxcDsRmIkiBAGk1rr+EumbZKsUAJgjWARIEyRoflQ5JglR3F2xKnC3go1D2rhhCN9Fns65vZ0123l9lcSVR5UXl9rVSLkbDQ+ZBO3vFB7lrDXCq3ghJ9gXEYyJhikEabd86VWSxhxdS19HtKzByPrXUQOa7hgwg947u+koPnkXvLg0/CUurczXbYKkEkTOVpkRqZ3PdEVcwlk2rrMGZkuTpyQ789Qp0HOCPKsZibtu22YWAezAZMQYaI0AKwfOi+EwhvWgyBgEGy3QGEDZvqpPqfOnpiu4XI0t/CLcRSWGcEbmNVImDvsCJHI0K4lw1LyIGBgEqZJzLKuGYTryHv7jVTAs5ULLqcgdQ7WszqdsjZAHO2x5jvqhd4sRedA2LzTlyi2CAViSkEes98wKNEX3DVLwefcU4RctXCuRztrkaNgeYHfTOGYZ2xCBIDz2Qw00ljOncJr0fGXHtqC/EblqBsyW2J/eIBPwofb6RJrnxN3EL3LZtx/2savRZO6e5iuMcQxlibTXLqh5zkyoYkmQrAwVIjxmfWm+PIw62yF3zKdJC6iGbeJns+Nb67jcHd9uxdI5hpRT5hQq++mW+HcLM/7sJ5jO8+7Nt5aUp1BWzTHjlkdRq/qebjClu1sDrt8uXI1cvasDlC9nkI9n2hE7xr5k99b8YjhdgibQQrqBnYx45ST8qrtiuEN/wAtzuZBuc9DqaSnq4RUsDi6k0vugJieF9QbMs4V1Riw0yl1zCQCZXSfKm8ZV0vgZ2PViEadIGzIR9nmDv7q01n/AGWdkvaiIzEiOUBp25U65wbh1wEBsSkjcCY8uwaFF+CGl5X5MXhbhYXxlQG4FkuYaZGaCYmZOh8e6ocbw/qyFJ7pHNTrvrW0u9EMMR9VibqMNVL2GMazqYE8/f6VDY6GBdDftXOy4BLwxJHYlXA5+NTJNCVGSs6QQ0RBnnPLXfSr2BxAEMbzrlYBSNYncg7jmaZxXhV3DsAysqyfaXQg7BW2OndVIwCTyJ0FTQ06PQ+FcTwzubbWDdti7C3AoILNOTMzbSWaSe5aB9LeCfRb2ddFZ2jKc2XYyNB3nT4mq3AbuGITPcukm4AyBgihSpykNvo2XnoKPdMMT1owYMW2JOYCCEEIpykbqpDAHwqV4Ksr4G+Vwt2wLeZL1kXpMzmWOsYZtdGExrsx2qrxR3RLCWyDntBz1QJOoObrDBYkKJI1iSdqm4qiCwpBuLdF17PtH6xSCHPdyA0jTcdzl4eUdrrXltsrqi2w0kQILMAezop5azPOlexVATD2MQVVlXNLlRniAwGdpzc45edVr9tkUMrwSe1lkEd2uoYGDttRrGYxLxfO7shuZykz2yxGYCMu2kzrpUPEOBnqrd4XVIYlVtkwyiCdthrmMDxNJSQNME2uIO0LcJCiTuxkkaseRPj41NwW2HxK/VC5DSqMw7RJnWd+ZA05UrGCIGYNmgezAadeZO23wqLF8MZJZGbrGMQBEA6kgb7SKdqyWnRqnvJiMmDxNx7T2nVFW2wbPJ0zPBlgcoM6aGs50r6O2bBeMSrP2CqyJy5WDjQ6EOsR4igf0lgc5k7nXvnnUWJvySYGiKNtzAEiBudyT41pGLRm5Ih0HIMY9xgH+VRjTcVZxQVUTSGIkme+dI5dnLVQDMT4CtUQK0MzETAGnvrtxQANyAYpWFGo7x8qSKR5U7A6l4aCfDWoXbXlXbg27+dOKzrNGwHp3DMcVF245LF20jVlygCSDodRvuYoNiMP9aqgr1T5gsoCFIkhdDpGvvo9g8RaKAadiNN/UedR4khmC5dFDOZjSVygRuRBNcl0zrq0COC4v6OS3VgzowYkgEGQIPIEaVvsR1N7DWmJRnUCWGuUsMpDA95gGfTavPXsEEkidAR3FRrB03/Pzq9w2/cKdXmhQTCjQlgZCjmR8ab5slLsWreAs3kC25tkahDEAFiQyzDSJGoIHOJqXC4B7d0AqXBVgHBJdCJUZXMaGT/PlYw/C2aA90WlzswjVhJOh12yxp4DSruHR7Ki2l5GtSSZBzTygD13NNF+nJrZGWv6W0zdXmW4Q2UMFhgSA67ToZy6bxR7ojxI6Fsy21WRBMEzt+8vlBGu9NxDK7kJbWSRnZgMx/u+u5nerGLtdXadwczBSVHKY086TlqdI2j0rirm6+XcXFeO2bTrkDFgLgCAzmW4ZKuD9kHYkjcb0A4hxrEPmlhaU6lbYAJ8zHyFLhmEzJmBk5Q7sTqSRJPid9KfgMJ1l4Tqqdo+Y9ke/X+6a7YYlHk87Jmb+HZf+7j8HwtUTM4zXDqS2pWdlBM+vjNOuPHIGirAa5hMg/kDVP6KTsK1Oe2Uxd12HrXLthiC6rJXUlRuOak/LxjvqXE2MjEENI7hp6GanbHMdRIMaiInSCdNzHjXNLPhn7jfOx2w6XqMf/IotVvZ55xqzlvEnVW1B7wZI/Eeh76bbuAR2d9j+jWi6ScNzqQBqJdI7vtoPEHUeaVlLN1FQlgWbYCYUeJjU+8b08b20vlbf4Ys8VamuHuv7oL4XFx3UVwnEdo38KyeEZozQYESY0E7SeVEbV0jTUEa/jW1HObPCY9pB1+MH02NHMFxU8/xrG8L4gTK+o8jr8/nRvDYo1IzW2blq4CrICDuCN/OgPGv2e2rik4ZxbbcI2q+Skez6g+lS4bGUVwmLPnSaTGnR5rj+E3bDZLtshvFY/hYaMPEGlcxb/Vhi3YBjWYE6KNNIr1lmS6uS4oZfHceIO4PiKyXSHoW6qz4cl13A+0PDTceXuOprKcGaxmgbxXhVsW8Ndlx1vaclwREgGO46kknTcaxVG9izdYvcgkgqSTPKAxMzIOx8uVXX4fc6nIpa5lAOX2svPQDWO/zqXCXy8GTbkSBHfMgjmJ5eArnctrN1HfcBYRSHGVwGgxvynUxyjapM2UEFSG2mdRzMfH30y+jEDq/aBiQIGsgb7b7VLgWlDmtBiNM2vLl5afyqZPuSvA7iOHLJCKA3tABh2pjUD36RpQR+NXLZBDnNEElRtR7BQZW2sOwIgTIBjQk9403ihuP4SIYsQGmIgCP1pVY2nsxTT5QMxHGmcZStvKfAydZkGdK4nEHyqmVABEkDU5TILa/rWmfR7aMvWdnb5b++q2JXUsraco8u6t0l2MW2EelHE+vKOyZbnVoh7IAlZkqByJPOTQ+YBjSRrUT4sse376jcn9c6tR2JbGBoIPdV3kTyI+NUj30+3d79v8AShoRI4BJjYa1zP405fZbxqO2NKBo9Gw1sZRlJB11I506wvbZj2jIUj7wHdyE791aS10GUL/9Q5gR7Ij3T+NdwfQZVcM2IYxGgWNgAOZ5Vh6Mzo9WBmOKHffbQbQaJcJ4IzYc3HPVl/ZJAOUTMgMCDOsT50dxvRHDmXd7pCidxAA1g9nWpPpYuFbREEGF0EDTceMGhQcXUhPJHlFVFCwLSrMb5Y98097d6CGcjwEflRdcOqae6mm3Ou/lVuC7s1hnaeyM0bbqc0ZjEZmkmO6TtUV28ea+6tI2DB5VXv4LQ6VjLG0d2PqoS5M21u229secflSt4JBOQus7w5189aL43AXQYtW1YRzaCD5ZTNRYPh14t21AXzE+ER+NClNOrZpKOCStxX6B/UvyvXPWD8xXAt0bXJgzqg/CKPnhdNPC6vXk8mDw9M+xj7mBxCk5Lqx3GR+dOsfSFMsquojMRrAOkkwDWrbhVVcZwLOpEkeVc08Kp0tztjnXFmcxa3XOVUTKrzmz6xGukcwfeBQDGdDne6zIyhD3zIPMARtPz8K3VrgGTWSTFRpgjA8h/OtFkyXqlzVGP8bA46Vxd/QzmC6HXioT6QiL1ZQqQSCSSxeMwEzAnuUVexn7Pr9xixxiN2iy9gmAxkiQSY2gTA7qKHBN41G2Ecd9UuomiJez8L4dAW3+z7EKdMYQe8WLh/CruG6HYkGPpnvwjke8VdD3F+2w9TT14ndXa6/8Ro/lNckv2YnwyXDdDMVIJxNojxtOvzuae6r6dF8XlEYi0p8ELfEsPlVBOk+IX/mk+YBq1Z6b3h7QVvhQuth3Mpeysi4p/c4ejnEBEYsMeZARf8OUz7xVmxwviiKYxFpz+/b0/wD5nNPrT7PTa23/ABLcVBjOl+XVMO7j/p3VJ9UeD7prSPUQlxIxl0WWHxR/uOxfR/E3jnayi3Y9u2xAeRHaRhv+9mnbfahOL6FYoMSiAiObAtvMToB36U+x+06zJW4blph9m4ke8rMesVZvftHKLn6i86fftlLi+rI5y+sU3CLd1uS3KtOzS/QAu9GMSo+ssXT3wJ+KgioTg7iKAEugjX2TAO2ojU1qcD+0+y+1u/6WSf8AsJo3hOl9q5HYuj+1h7o+OSKTgvJKUuyPMUZ0fOW1BBPagkaGOWsTUQvh8yspZe4b67a17HcdLgnKCDyK/MET8Kx/EL+HL/8A2687bF7dhk08GGQkeYqXHwG/c8wxNi0FfK+bUZRHv1P60qjMLp5Vu+K8EwlwzYsX0Ye1aZ+rPkDetlSf73pVPCcB4e7G3cuYjDXNsl4LHdo2SK1izGWOS7GPcBgO+KbmHdzr0q3+yqxowxNwjvAXX1pN+ymz/wDsXf4V/KtUmY2eZ5o9Kktrm12Ar0O5+ylDtiW/9sf5qmw/7LrWzYlyO4IAfeSaNLC0efWEzjbWY9KI2+HpH869GwfQDB24gXD4l/joIp/9BML/ANX+L/41LhJlqSRrLFsjc1LFRoI8adm8a2MxuLIKMCJBUg+NZKxiFtlrwabSk6t9llhWGYnUZdvLvrV33EMI5GvPf2n4wphsoO5n3fo1hlV0b41Fp2ZbpL0txPEL7W7DNbtA8iVkTEuRqB3LUWFwGNwhFy3defusGCtzIhxB9NascBwrWls2bUddeIJY/YB0nvknn90abmYMBexH0n6PbQM5c22VpMqph3uEGAJEjSRy1ibUVXBm5Ns3vRjpYb6KR7Q7LKeRG4JifXmKOrxRW0IiCJHdBBJ8vGsNwDh+XGX7SOIdM4cAGcjBSZ5zn1jmDRniDph4F26AXkKqhszHyzQB4muPJGUG9N1+Trg1JJuvFLajTnHBSDHPmR8qkxd9wsi0WIJG425GZisMeKMxMs1WcBicwe2WAzLIJMaj9fCs4ZZJ0+/g3WKMltyvPh/4NNY4kZh7Lqe6AfXQzHjUl3jaAwbVzz6o/gTWE4deZbwGupIB10PLWY129fCr+K4lf1tiXUrOhIBU94KEeEFpmuuPvU0zkmnBtNGsTjWHPtSnowjxhwDHlpUzXLeYrmEgx+I+BB9axL4W6ChVkykiUZ3AYbFTqVB1jarBx11MxZFVQBPWnMJA2UkEkBY125cqJwlWxMMm/NGpu5NRmExtNVRhlKrDCYHOgS8UZlLCwpA59XGo/swfWiVvHPA/3cQf3yPgXn4VzyU/B2Y8tLn90W/oUU8WgASdAKo2uOID7DTzUONvIrA9/Kst+0fpgLcW7RIYjY7r4tpE+FCu6rfwa+ratvZd+Qzxbi1hPacfAD3kihlvG2LvsOD6g/ImvMDZuXTnuMddcx1J8h/pV3CcJfR7du63cyhvgVH41culclu/0KPtNQdKO313PQWw084qK5gnHjQPgnHXVhZxAI7iRB9QQPf762GHII0IPka87J0+mVSPWw9XHLHVECNI3pKaNXbE8qp3sEPKsJYmuDqjkTK7XoylgGn2QVzE9+URJ9KKYG7e+zaYegX4NBofwwKcZluEhblkKvnbJLIPMMD6eFXuE3Mtx87WhbDgBVKggF2Xsa9oQoOvj4V6fT9KpQUnJnhdX7QnDLKCgtvPJbuW7p1NkjxBX5BqhbEvb9oMo7ypA95EVftC4cQ1sMuWFIPZGWQTlkDyETNWMURZcK7qQymY1iNNQY3/AANbPo12kzCPtSfEopoo2uJNyNWLfFHqnjOElpeyAukxIAbwjYHxGnzoZhcdmE/rTQg+M6VxZlkwv3uPJ6nT5MPUr3Vv3TNDcxIua3EDRznXykQabdwdtwANI+yxJXyGuYehoUuIpW8YwaDsdiPxqI5FLnc0nh08bBi3g7lth1DQTqbcgr72IMek60Vw1zNo4Cv3ZgZ8oPwrOYh70djUDXRob+6REVftXzetgzFxT2lghgR9rTlXZ02VJ0tvl2+x5XXdPKlJ015XK+obKUopmAxBdTmEOujef3h4GpQoma9FO1Z47VHNKWYUy9hsx3I8K5bVAILa8/OgZYF5QN4pLdU66TXj3+1317bfxt+ddHGrkR11wD+2fzqdQ9J65imBRgxgFSJmPiD8ta8r6Y4h7y2+sVlIuKpUmY3J1jbfvpvDukRtMSxLgiDmcnbuk07ivFziVaVAIhlj93vPMxzrDJba2OvA4xg993exU4oly1iVKKSwxNq0g7xagZZ8xrWi47aOHt4rF2rYV7wy55kiSFzRsp7RMDcwTBFLpN0hs4NmupZN1xdLzmy5etl4zgZuYOn3t9Yqfj/SLDrkzo95L1svlEHJbMHLlPtmT4aKK14OVUZXohjrlvqGzHMDdtAnXsjtgeVSdObNy/fs3QYIAHqGJ0jzFS8Os2TiLC4fMbcXLpzSCMwKxB13KRvodzvRTE2cQCQbNu4hbQElYE6HNyMaSK487l6lxfY9bo4weJ6le/bksNw9wFOVtVBOh5yOflUGWNxRrh2DdwCt26kCIJVxH3Zirlyxe2L22/tW/wAZPyrnULWx0uSUt3z9jLNdA5VNh+JIquHUkmWI5P3gDkTzHfJ50YxOGYe1YtGfusR/4iqbYO0d7F1fFSCPnNXB5MbtLYnJiw5VTbvzdszh4kVEXbTGyeQaWQdzRoRHu76l41xtLnVtauKyxqrGIIgqxG556eVE7nDrB9m6yn9623zAih2I4MgJh7TTvqNfMGK1XVyj8UfwYS9nQk/cl+Snwzitw5raXAxfVmIOmgELHOKL3XuXI61yQPsrKj11k+UxQ422Xy8NvhT0xRrny9XOXGyOvB7Px4/i3ZavuLStczEqizlJnUeyATrEnavPUDXrrO8t2vV2J28ZP4d9a/pFiP8Adj+86j3dqhPRHDRmf+qQv/fc5VPoD/hrq6RuScpO3wcPtFRg1CCpc/cLcF4KWuG2rJ1wUlncSqHQBLa7EyQC/KCRtrn8fxi4bjW+ruM4Yqc7EtI3GVdtfOnrxdrOLW4NVszmX78iLinzEr4ZRWn6R8ITEX1vWWdbgUFmRJLR7JdQRDAQCeeldZ5hV6KX7uIuZOoZOrh5eWRSD2dH1DEwBlg6HlMavGYqyRJUGZ1WCCRoYMajxoD0r6QCxhUs2ZFy7IkbquzsTzuNt4DaIqDoffZMObVxVbI0jMJhHEgfxZhXH1nwal2PS9mzrI4eS9fxNjNlDEH+z+RFcI7rp/xD5TQ/inFMPauKjoVkTmXUDUjUHX3TVl9OYI3BGxB1BFeVOMklKtme7jyJtxu2v0dxGD6z2mzQZBzEEHvB0IofFhWJ66G5nr2nTTfPUvE72W05HJW+VB8P0nsKuXq2J8lAHxrowRyONpv7M5uqyYVNKUVxy1Ydt4gHUYhz/wCsx/8AKrBLNqb1w6RPWHbzmh3BcdFsFdATmgeOtS8eY3OqHW5pUlkU6LrADRu3gdpFJPI5Nant8xvHhUYvQt+Ni8l5R/8AkH/3j+DVJYFsah0/jHPUnU99BLXDSsSKE4zEszkKBlGg/OiOKWd1qbryxzy4+lV6Ur8I24xdob3U/iH4V08Rs/fnyVj+FYDM3h7qnPEL33o9B+Va/wAKS4MP/p435/B6Fh+PWQNS/wDAafe6R4NhDsSf7BBHrFeeWcRfcwHMxOw/KrNrBGAWMnc+dOWN417zQY88c7ain+jWL0js2jKX7g2gBZkA/aBI0mfjW84TdZ7KM8ZiDsOUmOZ5RXknE7Vr6rInaS1DmZzNMgmPdFavh3TBrdu3bZSSihSc25A1JGTmeVdPSqm9+3k4evpwT007fZcI3mSuZKxa9OXn2F/ib/JSudO3Bjqf8X/xrt1I8rSykcFhT/yU9CP81PGBwwH/AAV/hBq0Yjdh76pPbB2u3R+vFaQyO71A0FlY7+rH5VBcxluCAFE6ex6d9Wvof/Vf1P5CorvDSft/4jSoLAuMwvXWubFLYt3FHtZU0tXVHMRlBPeo7xVLHcMvFcM4cKtlApuA8hAAUc2IGin5a0ZxXBLoIe3cAcbEMQfRhtQjjHDMfd0YhuUtdZiBzAzbVQijb6SkYi7dyZywgaxGvlroAPICrP8ATe+DCW0E7dony7qHr0ZxKiAi/wAX8qYvB76GSqzy1rGWGEnbR0Q6nJCOmLpfY2S9JL2UZjbLRqSqsJ5xJmPWov6WYgHU2o/dV1/7btZO5YvDcfGmHDXd6XpR8D/kz8m3HTTTUA/+of8AyR66OnSA9q3cA2kKjj/C6n4Vgzau959/86jZX5k/H86PTRS6ma/0j0S10swzkfWAH99Li/GCKurjbV49h7T6fZuA/AxXlbZqY1s8xPn/AKVLxfM1XWNbNL7bHr9rAp9qw58VC+/stNL/AGbhj7WdfBlYfFlI+NeVYHil+yZt3HTwDmP4Zj4VoMB+0C+ul4Zx3rAb3HQ/CscmGXZJnTi62L2ba/ZZ6dKotoEAC5zABnlvIqv0MUMmKXSeqtsJ7lbKTuPvDXlUXSfi1vEC2y3M0BtCdRMbg1R6P8SWxfDPrbZWt3Y36txlYiOY0b+7WnTqlTRh10lJ2nf+gzhuiNpbj3cTdXKzlshcW1ILEjOzds78lHma2+CxgsDPbTrEu9sNaJYMx03A5R/iMc4816YcAKv1gGYAdqDOZdxcUmSwIO+ukHvg30J6Um3aurvlAcTrJyssx310PY89boL9J+BJiVUMRbvKxuDKykqX1h7ZjTQHRvnQHA4S/ZuMLwGUoAHXnDGJUww0J5RWVsXvr2ua3WJOUkyWJ2JJ1Pzr0Dovh3t2c+Ivdp8xVSxjKInID9lZAnvaNaxzw1Y2mdXST05ov5ma6T4E3ShtwSoIM6d0b+tPwOCzWUS7MpMQdhMgdx0itZedSYBn08YqkLauYUA/3SPLWBXmuc4wUa2Xc92OLE8jne72avYE2sGihl3DCCD3bEaUCx72LLFWwpidGz6MORBK/CtbjuGsikgKWiQueCfeap2bLsIdAvgWBHuYCjFklG2919aHnwxlUYtJ9tr/AOzP4fpHaQQtggDlmH+Wn/0kszmNhgdpD8hqBqPE0fHBLB9pLY8cq/g1NvdGsK2gHu0rRZcD5T/Jg8HVpJKS242Cdqw7WYy/ZlSWkiRMRlHzrJrara2HdQBIIHh+VUb3CAzFguSdSNx6aCKnFm9O9K5Neo6X1qc3wZVgJiRPnXRbX7wrS3eC2Y7dxPWB+NNtcBwzD/ilwNOzLR4dma6odS3ymefk6FRe0l+QbgLyW0fs5nYgCRoF3J9dvSr1jHodGtx5E/jRHDcEwo53T5I8f9lXbWAwY+xdPmjj8BWOVSyO6/R1dO8OGNNr8mY41xDF/S2S07LahIIAEqUUxmiTzG9aq3ZQwZad9Mv4mmYs28+ZbbExHsxEDSNYHpVe/jLhK5EIXnngd0aLNb4HPU040qOLrFDQnGWp354+QRFgaaN7l/OndQv6RaFLduk6kR4MRUoZ/vt/HXWeaHHxln7w7/1pURxVn7y/rwqteVzzH8NRpaf7qn0j41VklsYyxvmHuqJ+I4f76/r1qRRA1A94rjOPu0xERxdg/bT9etMF2z99Ph/mqVnGnZ+FcEfcHuoGRF7X9Yvw/wA1QXLVk7ukny/Orq8wQPQR76a6pzUQaQA9sFYO7p8P81dbh1rYMn69atXLVs7Cm/Rl7qAB17hFs7EekVUbo8h+18vzo/8AR0PIe74bUmwinkvu3oAzL9GFn2vl+dMfoz3Vpjgl+6nuH5VCMNvNpfhQBln6Mty+Yqrd6PP3H4fnW0OHH9UD5RXRhlP2B7h+v9KNgMBd4C45GoTwhxsD8K9Afh6/1a+4U1sAvO0p9KVAZThnG3sKLV9Ge2PYIMNbncIx0K/uH0Iq4pwjFmt3raFh2syOhM94VWUnyJoy/CbTCGsr+fuqq/RfDmfqiPJmHyNUAKsYrBYYZlXrbkcgyp/ee4A5HgFMxuKHN0ivNeN94YlcoHsgCQQqDko+OpMkk1o16HYefZbzztUh6E2TqJn1PzqJxUlT4LjJwkpRe5mbnSe/9kKPf+dQv0nxR/5keQ/MmtFd6HINlMVC3RRPukeYrJYMa4SNn1WZ8yZnH47iTvdPuH5U0cYxH9Ya039GByUeZB/Ouf0dbklv+Gn6UPC/BPr5P6n+TNrxrEf1nxP51Nb45ieTT/F+dHz0bv8AJR5rAqN+jl3nPvo9KP8ASgeeb5k/yZ/E3sRcM5mXyLAe4tA9Krtw+4faf3k/nWlbo0/MH3mkvRk8kJ8pqqohybAWC4bbUg3CH8NQP51q8B0jS2oRUCqOQGmtVk6LnuI85qa10bXmfnR9wv5F0dJEMGT8R8mqVePK2mo35/zqqnRdNP51KnRhe5h5MfzpWPcvWeJL973kn11NWbONQfaQ+Y/nVC30fjZrgPiZ+dT2uHEadZc/XpTsVMIBkJns+jEf+X6ipc4+6vvH+aqK4D95jtOsVPb4Wse0fePzo1BQQt2dNdaeV9O6hicaSJDfr3V1uPKe4/r31oZl/Ivr471w2wd6GNxxdNv0a4OMqdzz7qACT4YeXrTDY/eJof8A7cEaLOlcPGv3PL/WmBe+jz3VxcOO+qw4x+77/wAKfbxysdRFIB5sgaweddRRv8DSa4TEfE01yxH2ff8A6UATKumkVxkjmtOt2RzI/Xzp/wBGE7CgCBbfkfKpuoB5xT7doDuqQWKVoKGJgCdZWnvhT4eg1p4txzq1ZtgjntRY6KCgjRhPdt8pp3VT3Dz/AJVcvYBG9oT+vOp7OBtgaCgAYcMPA+VJcJ3UW+jKP5mu5F7qNw2BhwdzllpJg35n3UTaOdMZ15mjcCg+FMake6q17BA7x76J3CCa6H8B7qW41QGPDtefoalTCRrr6mibXRtH67qjaKVMepFB8IY2FK3hj4fP1mruYbQf1+udLKDzjzpaWGpFUWB3R5Guizvr76nZKbuPhtRpHqI8np4iu9X3kR5D5xTls/6zSW150aA1nBbXw/XkKYE5GPMH8xT+q9RyrjWxzp6RahxQcj8aiyeBPjP5b0urWYmP1309LQ+976egWojCDxpZfEVN1HhIpBKNAajz1nIjWKel5pjNpFdpUASKx5kbfqals2WOxn9cqVKkMf8ARm7hHny2P68Ks2+HNGgA9TPlFKlQBascMXc7eR74q2uCtjWIA7ppUqYiRMAs6fr0p9vArMb+n6FKlQBOthfGnjDDeB7qVKgBy29p17qd1QPKu0qAHrhx4U9LYHM0qVAHTcpy3YpUqZI4OKjuXoO5/XpXaVMCvdunzrpcjvpUqAGNdNN69hv8qVKgDobu1/KudYe5j6/rlSpUANJ/X4025ejcgfrWlSoAb1i7Ty2kfP3V1Lq+ceWlKlQBIb47zUQxw1lW02/lrSpUAOF8Ea5h4Vy5cXbK5gbx512lTAjCqTpnXzpfR21AP6jypUqAO9S42iPOnIWj2f8AF/OlSoA//9k="
-                        alt="">
-                </div>
-                <!-- factor details -->
-                <div id="factor-details">
-                    <h3 id="factor-title">خلاصه فاکتور بیمه شما</h3>
-                    <div class="factor-item">نام خودرو شما: پراید</div>
-                    <div class="factor-item">نام خودرو شما: پراید</div>
-                    <div class="factor-item">نام خودرو شما: پراید</div>
-                    <div class="factor-item">نام خودرو شما: پراید</div>
-                    <!-- renew button -->
-                    <div id="renew-button-wrapper">
-                        <button id="#renew-button">محاسبه دیگر</button>
+                <!-- type of insurance -->
+                <div id="insurance-type-wrapper">
+                    <!-- بیمه شخص ثالث -->
+                    <div class="each-insurance-type-wrapper">
+                        <div class="insurance-type-check-box"></div>
+                        <h3 class="insurance-type-name">شخص ثالث</h3>
+                    </div>
+                    <!-- بیمه شخص ثالث و کامل-->
+                    <div class="each-insurance-type-wrapper">
+                        <div class="insurance-type-check-box"></div>
+                        <h3 class="insurance-type-name">شخص ثالث و بدنه</h3>
                     </div>
                 </div>
-            </div>
-        </main>
-    </div>
-</body>
-
+                <!-- calculate button -->
+                <div id="calculate-button-wrapper">
+                    <button id="calculate-button" class="buttons">
+                        محاسبه
+                    </button>
+                    <span id="calculate-hint" class="hide">
+                        لطفا همه گزینه ها را انتخاب کنید.
+                    </span>
+                </div>
+                <!-- loading -->
+                <div id="loading-wrapper" class="hide">
+                    <span class="loader"></span>
+                </div>
+                <!-- factor -->
+                <div id="factor-wrapper" class="hide">
+                    <!-- factor details -->
+                    <div id="factor-details">
+                        <h2 id="factor-title">خلاصه فاکتور بیمه شما</h2>
+                        <div class="factor-item">
+                            نام خودرو
+                            <span id="car-model" class="factor-value"></span>
+                        </div>
+                        <div class="factor-item">
+                            سال ساخت
+                            <span
+                                id="car-registration-year"
+                                class="factor-value"
+                            ></span>
+                        </div>
+                        <div class="factor-item">
+                            نوع بیمه
+                            <span
+                                id="car-insurance-type"
+                                class="factor-value"
+                            ></span>
+                        </div>
+                        <div class="factor-item">
+                            قیمت بیمه
+                            <span
+                                id="car-insurance-cost"
+                                class="factor-value"
+                            ></span>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </body>
 </html>

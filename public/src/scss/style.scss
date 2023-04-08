@@ -2,12 +2,15 @@
 @import "../css/css\ reset.css";
 @import "../scss/config";
 @import "./font";
+@import "./loading";
 
 // General Changes START ---
 body {
     background: #edf0f4;
     display: flex;
     justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
 * {
@@ -18,12 +21,8 @@ body {
 
 // insurance wrapper START ---
 #insurance-application-wrapper {
-    margin: 5% 0;
-    display: flex;
-    flex-direction: column;
-    // align-items: center;
+    margin: 2% 0;
     width: 80vw;
-    height: fit-content;
     box-shadow: 0 0 10px -3px #4646464c;
     border-radius: 20px;
     padding: 20px;
@@ -52,6 +51,10 @@ body {
     main {
         width: 85%;
         margin: 20px auto;
+        display: flex;
+        justify-content: center;
+        gap: 15px 0;
+        flex-direction: column;
 
         #car-details-wrapper {
             display: flex;
@@ -90,21 +93,21 @@ body {
                         transition: 0.3s;
                     }
 
-                    &>div {
+                    & > div {
                         padding: 10px 0;
                         transition: 0.2s ease-in-out;
                     }
 
-                    &>div:hover {
+                    & > div:hover {
                         transform: translateX(-5px);
                     }
 
-                    &>div {
+                    & > div {
                         position: relative;
 
                         &::after {
                             position: absolute;
-                            content: '';
+                            content: "";
                             left: 100%;
                             top: calc(50%);
                             width: 0;
@@ -120,7 +123,6 @@ body {
                                 width: 10px;
                             }
                         }
-
                     }
                 }
 
@@ -157,7 +159,7 @@ body {
         }
 
         #insurance-type-wrapper {
-            margin-block: 20px;
+            margin-block: 15px;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
@@ -182,36 +184,124 @@ body {
                 }
             }
         }
+        // buttons
+        .buttons {
+            cursor: pointer;
+            padding: 8px 25px;
+            background-color: var(--insurance-button-bg-color);
+            color: var(--insurance-button-text-color);
+            border: 1px solid transparent;
+            border-radius: 50px;
+            font-size: 18px;
+            transition: 0.15s linear;
 
+            &:hover {
+                background-color: transparent;
+                color: var(--insurance-button-hover-text-color);
+                border: 1px solid var(--insurance-button-bg-color);
+            }
+
+            &:active {
+                transform: scale(0.8);
+            }
+        }
         #calculate-button-wrapper {
             display: flex;
             justify-content: center;
-
-            button {
-                cursor: pointer;
-                padding: 8px 25px;
-                background-color: var(--insurance-button-bg-color);
-                color: var(--insurance-button-text-color);
-                border: 1px solid transparent;
-                border-radius: 50px;
-                font-size: 18px;
-                transition: 0.15s linear;
-
-                &:hover {
-                    background-color: var(--insurance-button-hover-bg);
-                    color: var(--insurance-button-hover-text-color);
-                    border: 1px solid var(--insurance-button-bg-color);
+            flex-direction: column;
+            align-items: center;
+            gap: 10px 0;
+            #calculate-hint {
+                color: red;
+                &.animation{
+                    animation: hintAnimation .5s;
                 }
-
-                &:active {
-                    transform: scale(0.8);
+                &.hide {
+                    display: none;
+                }
+                @keyframes hintAnimation {
+                    0%,100% {
+                        transform: rotate(0deg);
+                    }
+                    25%{
+                        transform: rotate(3deg);
+                    }
+                    50% {
+                        transform: rotate(-3deg);
+                    }
+                    75%{
+                        transform: rotate(3deg);
+                    }
                 }
             }
         }
-
+        #loading-wrapper {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            &.hide {
+                display: none;
+            }
+        }
         #factor-wrapper {
-            // temp
-            display: none;
+            min-height: max-content;
+            transition: 0.3s ease-in-out;
+            display: flex;
+            justify-content: center;
+            flex-direction: row;
+
+            &.hide {
+                max-height: 0;
+                transition: 0.3s ease-in-out;
+                overflow: hidden;
+            }
+            // factor details
+            #factor-details {
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                background-color: var(--insurance-text-color2);
+                padding: 20px;
+                border-radius: 8px;
+                width: 60vw;
+                max-width: 450px;
+                #factor-title {
+                    color: var(--insurance-factor-color);
+                }
+                .factor-item {
+                    color: var(--insurance-factor-color);
+                    padding-block: 10px;
+                    margin-top: 20px;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    // factor item that has car-insurance-cost id
+                    &:has(#car-insurance-cost) {
+                        position: relative;
+                        margin-top: 20px;
+                        &::after {
+                            content: "";
+                            position: absolute;
+                            left: 0;
+                            bottom: 120%;
+                            height: 1px;
+                            width: 100%;
+                            background-color: #c0c0c0a0;
+                        }
+                    }
+                    &:first-of-type,
+                    &:last-of-type {
+                        margin-top: 5px;
+                    }
+                    // factor values
+                    .factor-value {
+                        font-weight: bold;
+                        font-size: 18px;
+                    }
+                }
+            }
         }
     }
 }

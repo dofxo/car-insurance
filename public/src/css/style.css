@@ -11,16 +11,65 @@
   --insurance-button-text-color: #fff;
   --insurance-button-hover-bg: #fff;
   --insurance-button-hover-text-color: #1A0C29;
+  --insurance-factor-color:#fff;
 }
 
 @font-face {
   font-family: yekan;
   src: url("/public/fonts/BYekan+.ttf");
 }
+.loader {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  border: 3px solid;
+  border-color: var(--insurance-text-color) var(--insurance-text-color) transparent transparent;
+  box-sizing: border-box;
+  animation: rotation 1.5s linear infinite;
+}
+.loader::before {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  border: 3px solid;
+  border-color: transparent transparent var(--insurance-text-color) var(--insurance-text-color);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  box-sizing: border-box;
+  transform-origin: center center;
+  animation: rotation 1.5s linear infinite;
+}
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotationBack {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
 body {
   background: #edf0f4;
   display: flex;
   justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 
 * {
@@ -28,11 +77,8 @@ body {
 }
 
 #insurance-application-wrapper {
-  margin: 5% 0;
-  display: flex;
-  flex-direction: column;
+  margin: 2% 0;
   width: 80vw;
-  height: fit-content;
   box-shadow: 0 0 10px -3px rgba(70, 70, 70, 0.2980392157);
   border-radius: 20px;
   padding: 20px;
@@ -58,6 +104,10 @@ body {
 #insurance-application-wrapper main {
   width: 85%;
   margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  gap: 15px 0;
+  flex-direction: column;
 }
 #insurance-application-wrapper main #car-details-wrapper {
   display: flex;
@@ -147,7 +197,7 @@ body {
   top: calc(50% - 5px);
 }
 #insurance-application-wrapper main #insurance-type-wrapper {
-  margin-block: 20px;
+  margin-block: 15px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -169,11 +219,7 @@ body {
 #insurance-application-wrapper main #insurance-type-wrapper .each-insurance-type-wrapper .insurance-type-check-box.checked {
   background-color: var(--insurance-checkBox-color);
 }
-#insurance-application-wrapper main #calculate-button-wrapper {
-  display: flex;
-  justify-content: center;
-}
-#insurance-application-wrapper main #calculate-button-wrapper button {
+#insurance-application-wrapper main .buttons {
   cursor: pointer;
   padding: 8px 25px;
   background-color: var(--insurance-button-bg-color);
@@ -183,14 +229,103 @@ body {
   font-size: 18px;
   transition: 0.15s linear;
 }
-#insurance-application-wrapper main #calculate-button-wrapper button:hover {
-  background-color: var(--insurance-button-hover-bg);
+#insurance-application-wrapper main .buttons:hover {
+  background-color: transparent;
   color: var(--insurance-button-hover-text-color);
   border: 1px solid var(--insurance-button-bg-color);
 }
-#insurance-application-wrapper main #calculate-button-wrapper button:active {
+#insurance-application-wrapper main .buttons:active {
   transform: scale(0.8);
 }
-#insurance-application-wrapper main #factor-wrapper {
+#insurance-application-wrapper main #calculate-button-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px 0;
+}
+#insurance-application-wrapper main #calculate-button-wrapper #calculate-hint {
+  color: red;
+}
+#insurance-application-wrapper main #calculate-button-wrapper #calculate-hint.animation {
+  animation: hintAnimation 0.5s;
+}
+#insurance-application-wrapper main #calculate-button-wrapper #calculate-hint.hide {
   display: none;
+}
+@keyframes hintAnimation {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(3deg);
+  }
+  50% {
+    transform: rotate(-3deg);
+  }
+  75% {
+    transform: rotate(3deg);
+  }
+}
+#insurance-application-wrapper main #loading-wrapper {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#insurance-application-wrapper main #loading-wrapper.hide {
+  display: none;
+}
+#insurance-application-wrapper main #factor-wrapper {
+  min-height: max-content;
+  transition: 0.3s ease-in-out;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+#insurance-application-wrapper main #factor-wrapper.hide {
+  max-height: 0;
+  transition: 0.3s ease-in-out;
+  overflow: hidden;
+}
+#insurance-application-wrapper main #factor-wrapper #factor-details {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: var(--insurance-text-color2);
+  padding: 20px;
+  border-radius: 8px;
+  width: 60vw;
+  max-width: 450px;
+}
+#insurance-application-wrapper main #factor-wrapper #factor-details #factor-title {
+  color: var(--insurance-factor-color);
+}
+#insurance-application-wrapper main #factor-wrapper #factor-details .factor-item {
+  color: var(--insurance-factor-color);
+  padding-block: 10px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#insurance-application-wrapper main #factor-wrapper #factor-details .factor-item:has(#car-insurance-cost) {
+  position: relative;
+  margin-top: 20px;
+}
+#insurance-application-wrapper main #factor-wrapper #factor-details .factor-item:has(#car-insurance-cost)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 120%;
+  height: 1px;
+  width: 100%;
+  background-color: rgba(192, 192, 192, 0.6274509804);
+}
+#insurance-application-wrapper main #factor-wrapper #factor-details .factor-item:first-of-type, #insurance-application-wrapper main #factor-wrapper #factor-details .factor-item:last-of-type {
+  margin-top: 5px;
+}
+#insurance-application-wrapper main #factor-wrapper #factor-details .factor-item .factor-value {
+  font-weight: bold;
+  font-size: 18px;
 }
