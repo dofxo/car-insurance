@@ -177,10 +177,41 @@ body {
                     border-radius: 100%;
 
                     &.checked {
-                        background-color: green;
+                        background-color: var(--insurance-checkBox-color);
                     }
                 }
             }
+        }
+
+        #calculate-button-wrapper {
+            display: flex;
+            justify-content: center;
+
+            button {
+                cursor: pointer;
+                padding: 8px 25px;
+                background-color: var(--insurance-button-bg-color);
+                color: var(--insurance-button-text-color);
+                border: 1px solid transparent;
+                border-radius: 50px;
+                font-size: 18px;
+                transition: 0.15s linear;
+
+                &:hover {
+                    background-color: var(--insurance-button-hover-bg);
+                    color: var(--insurance-button-hover-text-color);
+                    border: 1px solid var(--insurance-button-bg-color);
+                }
+
+                &:active {
+                    transform: scale(0.8);
+                }
+            }
+        }
+
+        #factor-wrapper {
+            // temp
+            display: none;
         }
     }
 }

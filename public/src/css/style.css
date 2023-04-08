@@ -3,11 +3,14 @@
   --insurance-primary-color: #F3F7FF;
   --insurance-secondary-color: #3792EB;
   --insurance-bg-color: #fff;
-  --insurance-button-bg-color: #1A0C29;
-  --insurance-button-text-color: #fff;
   --insurance-text-color: #2F243F;
   --insurance-text-color2: #130F49;
   --insurance-selection-color: #787878;
+  --insurance-checkBox-color: #130F49;
+  --insurance-button-bg-color: #1A0C29;
+  --insurance-button-text-color: #fff;
+  --insurance-button-hover-bg: #fff;
+  --insurance-button-hover-text-color: #1A0C29;
 }
 
 @font-face {
@@ -164,5 +167,30 @@ body {
   border-radius: 100%;
 }
 #insurance-application-wrapper main #insurance-type-wrapper .each-insurance-type-wrapper .insurance-type-check-box.checked {
-  background-color: green;
+  background-color: var(--insurance-checkBox-color);
+}
+#insurance-application-wrapper main #calculate-button-wrapper {
+  display: flex;
+  justify-content: center;
+}
+#insurance-application-wrapper main #calculate-button-wrapper button {
+  cursor: pointer;
+  padding: 8px 25px;
+  background-color: var(--insurance-button-bg-color);
+  color: var(--insurance-button-text-color);
+  border: 1px solid transparent;
+  border-radius: 50px;
+  font-size: 18px;
+  transition: 0.15s linear;
+}
+#insurance-application-wrapper main #calculate-button-wrapper button:hover {
+  background-color: var(--insurance-button-hover-bg);
+  color: var(--insurance-button-hover-text-color);
+  border: 1px solid var(--insurance-button-bg-color);
+}
+#insurance-application-wrapper main #calculate-button-wrapper button:active {
+  transform: scale(0.8);
+}
+#insurance-application-wrapper main #factor-wrapper {
+  display: none;
 }
