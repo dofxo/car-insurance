@@ -13,9 +13,7 @@ body {
 * {
     font-family: "yekan";
 }
-.hide {
-    display: none !important;
-}
+
 // General Changes END ---
 
 // insurance wrapper START ---
@@ -72,9 +70,10 @@ body {
                 position: relative;
 
                 .drop-down {
+                    box-shadow: 0 5px 10px -1px #0000002f;
                     position: absolute;
                     width: 100%;
-                    max-height: 180px;
+                    height: 150px;
                     overflow-y: scroll;
                     top: 100%;
                     left: 0;
@@ -84,14 +83,44 @@ body {
                     flex-direction: column;
                     gap: 10px 0;
                     z-index: 2;
+                    transition: 0.3s linear;
 
-                    & > div {
+                    &.hide {
+                        height: 0;
+                        transition: 0.3s;
+                    }
+
+                    &>div {
                         padding: 10px 0;
                         transition: 0.2s ease-in-out;
                     }
 
-                    & > div:hover {
-                        transform: translateX(-10px);
+                    &>div:hover {
+                        transform: translateX(-5px);
+                    }
+
+                    &>div {
+                        position: relative;
+
+                        &::after {
+                            position: absolute;
+                            content: '';
+                            left: 100%;
+                            top: calc(50%);
+                            width: 0;
+                            height: 2px;
+                            border-radius: 5px;
+                            background-color: var(--insurance-text-color2);
+                            margin-left: 5px;
+                            transition: 0.2s ease-in-out;
+                        }
+
+                        &:hover {
+                            &::after {
+                                width: 10px;
+                            }
+                        }
+
                     }
                 }
 
@@ -126,6 +155,7 @@ body {
                 }
             }
         }
+
         #insurance-type-wrapper {
             margin-block: 20px;
             display: flex;
@@ -133,19 +163,22 @@ body {
             align-items: flex-start;
             gap: 10px;
             color: var(--insurance-text-color);
+
             .each-insurance-type-wrapper {
                 display: flex;
                 flex-direction: row;
                 gap: 10px;
+
                 .insurance-type-check-box {
                     width: 20px;
                     height: 20px;
                     border: 1px solid;
                     cursor: pointer;
                     border-radius: 100%;
-                   &.checked{
-                    background-color: green;
-                   }
+
+                    &.checked {
+                        background-color: green;
+                    }
                 }
             }
         }
