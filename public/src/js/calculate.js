@@ -1,11 +1,12 @@
 // imports
 import addCommaToNumber from "./helpers/comaInBetweenNumbers.js"
 import PersianDate from "./year.js"
+import CarModals from "./car-render.js"
 /** 
  * calculates the Insurance based on given values from dropdown menus in DOM
  * 
  */
-class CalculateInsurance {
+class CalculateInsurance extends CarModals {
     /**
      * calls the renderFactor method
      * @param {string} carName - car's name
@@ -13,6 +14,7 @@ class CalculateInsurance {
      * @param {string} insuranceType - type of insurance
      */
     constructor(carName, carRegistrationYear, insuranceType) {
+        super()
         this.carName = carName
         this.carRegistrationYear = carRegistrationYear
         this.insuranceType = insuranceType
@@ -27,7 +29,7 @@ class CalculateInsurance {
             carRegisterYear = document.querySelector('#car-registration-year'),
             carInsuranceType = document.querySelector('#car-insurance-type')
 
-        if (this.carName !== "انتخاب نوع خودرو" &&  this.carRegistrationYear !== "انتخاب سال ساخت" && this.insuranceType) {
+        if (this.carName !== "انتخاب نوع خودرو" && this.carRegistrationYear !== "انتخاب سال ساخت" && this.insuranceType) {
             carModel.innerHTML = this.carName
             carRegisterYear.innerHTML = this.carRegistrationYear
             carInsuranceType.innerHTML = this.insuranceType
@@ -44,6 +46,7 @@ class CalculateInsurance {
             /// adds "animation" class
             calculateHint.classList.add("animation")
         }
+
     }
     /** toggles the visibility of elements */
     toggleVisibility() {
@@ -71,19 +74,8 @@ class CalculateInsurance {
         this.baseCost = 1_000_000
         this.totalCost = 0
 
-        //  sets the car Ratio
-        if (this.carName === 'سورن پلاس') {
-            this.carRatio = 1.5
-        }
-        else if (this.carName === 'پژو 206') {
-            this.carRatio = 1.4
-        }
-        else if (this.carName === 'پراید') {
-            this.carRatio = 0.9
-        }
-        else if (this.carName === 'پژوه 405') {
-            this.carRatio = 1.3
-        }
+        // gets car ratio
+        this.changeCarRatio()
         //  checks for the insuranceType
         /** if it is thirdPerson this code will be executed */
         if (this.insuranceType === 'شخص ثالث') {
@@ -98,6 +90,19 @@ class CalculateInsurance {
 
         // outPuts the total cost
         carInsuranceCost.textContent = addCommaToNumber(this.totalCost.toFixed()) + " " + 'تومان'
+    }
+    /**
+     * change the carRatio based on carRatio in carModelsArray from CarModals class
+     */
+    changeCarRatio() {
+        // selector
+        const carModalsArray = new CarModals().carModelsArray
+        // loops the array and sets the carRatio based carName in DOM
+        carModalsArray.forEach(array => {
+            if (this.carName === array.carName) {
+                this.carRatio = array.carRatio
+            }
+        })
     }
     /** updates the year ratio */
     thirdPersonInsurance() {

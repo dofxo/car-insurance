@@ -1,14 +1,26 @@
 /**
  * Creates car modals and renders them into DOM
  */
-export class CarModals {
+class CarModals {
     // creates array of car models
     constructor() {
         this.carModelsArray = [
-            "سورن پلاس",
-            "پراید",
-            "پژو 206",
-            "پژوه 405",
+            {
+                carName: "سورن پلاس",
+                carRatio: 1.5
+            },
+            {
+                carName: "پژو 405",
+                carRatio: 1.3
+            },
+            {
+                carName: "پژو 206",
+                carRatio: 1.4
+            },
+            {
+                carName: "پراید",
+                carRatio: 0.9
+            },
         ]
     }
     // creates carItem div
@@ -21,7 +33,7 @@ export class CarModals {
         // item name
         const item = document.createElement("div")
         item.classList.add("item")
-        item.textContent = this.carModelsArray[itemNum]
+        item.textContent = this.carModelsArray[itemNum].carName
         return item
     }
     /**
@@ -40,7 +52,7 @@ export class CarModals {
         }
         // selects items after being created
         let items = document.querySelectorAll(".item");
-        
+
         // events
 
         // click event on items
@@ -52,3 +64,4 @@ export class CarModals {
         })
     }
 }
+export default CarModals

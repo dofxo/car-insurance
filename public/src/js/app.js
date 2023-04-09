@@ -1,5 +1,5 @@
 const log = console.log
-import { CarModals } from "./car-render.js"
+import CarModals from "./car-render.js"
 import PersianDate from "./year.js";
 import CalculateInsurance from "./calculate.js";
 
