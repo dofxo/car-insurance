@@ -71,7 +71,7 @@ class CalculateInsurance extends CarModals {
         this.currentYear = new PersianDate().year()
         this.yearDifference = ((this.currentYear - this.carRegistrationYear) === 0 ? 0.9 : this.currentYear - this.carRegistrationYear)
         this.carRatio = 0
-        this.baseCost = 1_000_000
+        this.baseCost = 2_500_000
         this.totalCost = 0
 
         // gets car ratio
@@ -106,11 +106,11 @@ class CalculateInsurance extends CarModals {
     }
     /** updates the year ratio */
     thirdPersonInsurance() {
-        this.yearRatio = (this.yearDifference) * 0.5
+        this.yearRatio = (this.yearDifference) * 0.2
     }
     /** updates the year ratio */
     bodyInsurance() {
-        this.yearRatio = (this.yearDifference) * 0.8
+        this.yearRatio = (this.yearDifference) * 0.3
     }
 
 }
