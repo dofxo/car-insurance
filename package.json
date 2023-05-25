@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "sass": "sass -w --no-source-map ./public/src/scss:./public/src/css"
+    "sass": "sass -w --no-source-map ./public/src/scss:./public/dist/css"
   },
   "keywords": [],
   "author": "",
